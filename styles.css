@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@font-face {
+    font-family: "OpenSans";
+    font-style: normal;
+    font-weight: 300;
+    src: url(./open-sans/OpenSans-Regular.ttf);
+}
+
+h1 {
+    font-family: "OpenSans";
+    display: flex;
+    justify-content: center;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    font-family: "OpenSans";
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 400px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 500px;
+
+    background-color: #06071a;
+    box-shadow: 0 4px 6px rgba(2, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 500px;
+    margin: 20px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffbb00;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #ffcc40;
+}
+
+.cardNote {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100px;
+}
+
+.note {
+    display: flex;
+    gap: 15px;
+}
+
+.noteContent {
+    width: 600px;
+}

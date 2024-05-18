@@ -30,7 +30,7 @@ function render() {
         const yournote = yournotes[i];
 
         noteContainer.innerHTML += /*html*/ `
-            <div id="notiz" class="cardNote">
+            <div id="notiz" class="cardNote container">
                 <p>Name: ${name}</p>
                 <p>Ihre Notiz: ${yournote}</p>
                 <button onclick="deleteNote(${i})">Löschen</button>

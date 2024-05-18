@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <title>Notizblock</title>
+</head>
+<body>
+    <div data-include="templates/header.html"></div>
 
-        <title>Notizblock</title>
-    </head>
-    <body onload="render(), includeHTML()">
-        <div data-include="templates/header.html"></div>
+    <div class="card textarea">
+        <input placeholder="Name" id="name" rows="2" cols="30" />
+        <textarea
+            class="input-box-title"
+            oninput="autoResizeTextarea(this)"
+            placeholder="Ihre Notiz"
+            id="note"
+            rows="25"
+            cols="300"
+        ></textarea>
+        <button type="submit" onclick="addYourNotes()">hinzufügen</button>
+    </div>
 
-        <div class="card textarea">
-            <input placeholder="Name" id="name" rows="2" cols="30" />
-            <textarea
-                class="input-box-title"
-                oninput="autoResizeTextarea(this)"
-                placeholder="Ihre Notiz"
-                id="note"
-                rows="25"
-                cols="300"
-            ></textarea>
-            <button type="submit" onclick="addYourNotes()">hinzufügen</button>
-        </div>
-
-        <div class="noteContetn">
-            <div id="content" class="note"></div>
-        </div>
-    </body>
+    <div class="noteContent">
+        <div id="content" class="note"></div>
+    </div>
+</body>
 </html>

@@ -1,6 +1,11 @@
 let names = ["Mahir", "Svetlana"];
 let yournotes = ["Test", "Test2"];
-load();
+
+document.addEventListener("DOMContentLoaded", function () {
+    load();
+    render();
+    includeHTML();
+});
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[data-include]");
@@ -25,12 +30,12 @@ function render() {
         const yournote = yournotes[i];
 
         noteContainer.innerHTML += /*html*/ `
-                <div id="notiz" class="cardNote">
-                    <p>Name: </p> ${name} <br>
-                    <p>Ihre Notiz: </p> ${yournote}
-                    <button onclick="deleteNots(${i})">Löschen</button>
-                </div>
-            `;
+            <div id="notiz" class="cardNote">
+                <p>Name: ${name}</p>
+                <p>Ihre Notiz: ${yournote}</p>
+                <button onclick="deleteNote(${i})">Löschen</button>
+            </div>
+        `;
     }
 }
 
@@ -48,7 +53,7 @@ function addYourNotes() {
     save();
 }
 
-function deleteNots(i) {
+function deleteNote(i) {
     names.splice(i, 1);
     yournotes.splice(i, 1);
 

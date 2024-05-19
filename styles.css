@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+.cardDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,23 +70,55 @@ button:hover {
 }
 
 .cardNote {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    width: 40%;
+    width: 450px;
+    height: 300px;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-  }
-  
-  .cardNote:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  .container {
-    padding: 2px 16px;
-  }
+}
 
-  .note {
+.cardNote:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.note {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
     gap: 15px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    max-width: 100%;
+    padding: 10px;
+}
+
+@media (max-width: 1020px) {
+    .note {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 15px;
+    }
+
+    .cardNote {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 }

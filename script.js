@@ -30,14 +30,17 @@ function render() {
         const yournote = yournotes[i];
 
         noteContainer.innerHTML += /*html*/ `
-            <div id="notiz" class="cardNote container">
-                <p>Name: ${name}</p>
-                <p>Ihre Notiz: ${yournote}</p>
+            <div class="cardNote">
+                <div class="container">
+                    <label>Name: ${name}</label>
+                    <textarea readonly rows="4" cols="50">${yournote}</textarea>
+                </div>
                 <button onclick="deleteNote(${i})">Löschen</button>
             </div>
         `;
     }
 }
+
 
 function addYourNotes() {
     let name = document.getElementById("name");

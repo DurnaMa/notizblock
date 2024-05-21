@@ -110,6 +110,16 @@ button:hover {
     gap: 15px;
 }
 
+.trash-button {
+    width: 150px;
+    height: auto;
+    background-color: #ff0000; /* Rote Hintergrundfarbe */
+    color: #ffffff; /* Weiße Textfarbe */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
 @media screen and (max-width: 1020px) {
     .cardNote {
         width: 100%;

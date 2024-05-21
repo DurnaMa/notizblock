@@ -1,5 +1,5 @@
 let names = ["Mahir", "Svetlana"];
-let yournotes = ["Test", "Test2"];
+let yourNotes = ["Test", "Test2"];
 
 document.addEventListener("DOMContentLoaded", function () {
     load();
@@ -23,11 +23,11 @@ async function includeHTML() {
 
 function render() {
     let noteContainer = document.getElementById("content");
-    noteContainer.innerHTML = '';
+    noteContainer.innerHTML = "";
 
     for (let i = 0; i < names.length; i++) {
         const name = names[i];
-        const yournote = yournotes[i];
+        const yournote = yourNotes[i];
 
         noteContainer.innerHTML += /*html*/ `
             <div class="cardNote">
@@ -41,13 +41,12 @@ function render() {
     }
 }
 
-
-function addYourNotes() {
+function addyourNotes() {
     let name = document.getElementById("name");
     let note = document.getElementById("note");
 
     names.push(name.value);
-    yournotes.push(note.value);
+    yourNotes.push(note.value);
 
     name.value = "";
     note.value = "";
@@ -58,7 +57,7 @@ function addYourNotes() {
 
 function deleteNote(i) {
     names.splice(i, 1);
-    yournotes.splice(i, 1);
+    yourNotes.splice(i, 1);
 
     render();
     save();
@@ -68,21 +67,26 @@ function save() {
     let namesAsText = JSON.stringify(names);
     localStorage.setItem("names", namesAsText);
 
-    let yournotesAsText = JSON.stringify(yournotes);
-    localStorage.setItem("yournotes", yournotesAsText);
+    let yourNotesAsText = JSON.stringify(yourNotes);
+    localStorage.setItem("yourNotes", yourNotesAsText);
 }
 
 function load() {
     let namesAsText = localStorage.getItem("names");
-    let yournotesAsText = localStorage.getItem("yournotes");
+    let yourNotesAsText = localStorage.getItem("yourNotes");
 
-    if (namesAsText && yournotesAsText) {
+    if (namesAsText && yourNotesAsText) {
         names = JSON.parse(namesAsText);
-        yournotes = JSON.parse(yournotesAsText);
+        yourNotes = JSON.parse(yourNotesAsText);
     }
 }
 
 function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+}
+
+function trash() {
+    // Hier kannst du den Code einfügen, der beim Klicken auf den Trash-Button ausgeführt werden soll
+    alert("Eintrag wird gelöscht!");
 }

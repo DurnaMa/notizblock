@@ -5,21 +5,24 @@ document.addEventListener("DOMContentLoaded", function () {
     load();
     render();
     includeHTML();
+    trash();
 });
 
-async function includeHTML() {
-    let includeElements = document.querySelectorAll("[data-include]");
-    for (let i = 0; i < includeElements.length; i++) {
-        let element = includeElements[i];
-        let file = element.getAttribute("data-include");
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = "Page not found";
+class IncludeHTML extends HTMLElement {
+    async connectedCallback() {
+        const file = this.getAttribute("src");
+        try {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+            this.innerHTML = await response.text();
+        } catch (error) {
+            this.innerHTML = 'Page not found';
+            console.error(error);
         }
     }
 }
+
+customElements.define('include-html', IncludeHTML);
 
 function render() {
     let noteContainer = document.getElementById("content");
@@ -35,13 +38,13 @@ function render() {
                     <label>Name: ${name}</label>
                     <textarea readonly rows="4" cols="50">${yournote}</textarea>
                 </div>
-                <button onclick="deleteNote(${i})">Löschen</button>
+                <button onclick="trash(${i})">Löschen</button>
             </div>
         `;
     }
 }
 
-function addyourNotes() {
+function addYourNotes() {
     let name = document.getElementById("name");
     let note = document.getElementById("note");
 
@@ -86,7 +89,35 @@ function autoResizeTextarea(textarea) {
     textarea.style.height = textarea.scrollHeight + "px";
 }
 
+// {
+//     // Hier kannst du den Code einfügen, der beim Klicken auf den Trash-Button ausgeführt werden soll
+//     alert("Eintrag wird gelöscht!");
+// }
+
 function trash() {
-    // Hier kannst du den Code einfügen, der beim Klicken auf den Trash-Button ausgeführt werden soll
-    alert("Eintrag wird gelöscht!");
+    let noteContainer = document.getElementById("trash");
+    noteContainer.innerHTML = "";
+
+    for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        const yournote = yourNotes[i];
+
+        noteContainer.innerHTML += /*html*/ `
+            <div class="cardNote">
+                <div class="container">
+                    <label>Name: ${name}</label>
+                    <textarea readonly rows="4" cols="50">${yournote}</textarea>
+                </div>
+                <button onclick="deleteNoteFromTrash(${i})">Löschen</button>
+            </div>
+        `;
+    }
+}
+
+function deleteNoteFromTrash(i) {
+    names.splice(i, 1);
+    yourNotes.splice(i, 1);
+
+    trash();
+    save();
 }

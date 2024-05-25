@@ -5,11 +5,14 @@ let trashNotes = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     load();
-    render();
+    if (document.getElementById("content")) {
+        render();
+    }
     if (document.getElementById("trash")) {
         renderTrash();
     }
 });
+
 
 class IncludeHTML extends HTMLElement {
     async connectedCallback() {

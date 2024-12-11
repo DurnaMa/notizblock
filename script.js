@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
 class IncludeHTML extends HTMLElement {
     async connectedCallback() {
         const file = this.getAttribute("src");
